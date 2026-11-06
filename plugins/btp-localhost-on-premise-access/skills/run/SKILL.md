@@ -12,7 +12,7 @@ tunnel, `fiori run` or `fiori deploy`); you check the login first and run them i
 `CLI` stands for:
 
 ```sh
-npx -y -p @scodigis/generator-btp-on-premise-scripts@0.8.1 btp-on-premise-setup <command> [options]
+npx -y -p @scodigis/generator-btp-on-premise-scripts@0.8.2 btp-on-premise-setup <command> [options]
 ```
 
 Arguments: `$ARGUMENTS` (environment name and/or mode, both optional).
