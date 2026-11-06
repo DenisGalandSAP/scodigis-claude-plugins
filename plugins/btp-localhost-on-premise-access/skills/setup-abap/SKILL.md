@@ -12,7 +12,7 @@ credentials. Environment name from the arguments, if any: `$ARGUMENTS`.
 Run the CLI `btp-on-premise-setup` from the npm package `@scodigis/generator-btp-on-premise-scripts` as:
 
 ```sh
-npx -y -p @scodigis/generator-btp-on-premise-scripts@0.8.0 btp-on-premise-setup <command> [options]
+npx -y -p @scodigis/generator-btp-on-premise-scripts@0.8.1 btp-on-premise-setup <command> [options]
 ```
 
 Below, `CLI` stands for that command. Every command prints JSON; a failure prints `{ "error": "..." }` and exits
@@ -90,7 +90,9 @@ ADT only accepts https, so the proxy's https listener needs a localhost certific
 1. `CLI adt-cert`: creates it once (`~/.config/btp-proxy`) and imports it into the JRE of ABAP Development Tools
    for VS Code. Report each `vscode` entry: after an import, the user reloads the VS Code window.
 2. For each `eclipse` entry, give the user its `command`, to run in PowerShell (`shell: powershell`) or a terminal
-   with Eclipse closed.
+   with Eclipse closed. `installs` lists the Eclipse folders that run on that Java (several can share one through
+   `-vm` in `eclipse.ini`), so one command covers them all. If the user's Eclipse isn't listed (a folder name that
+   doesn't start with `eclipse`), ask where it is and which Java its `eclipse.ini` names with `-vm`.
 3. Then they add the system as `https://127.0.0.1:<BTP_PROXY_TLS_PORT>` (VS Code ADT: a destination with the
    client; Eclipse: an ABAP Cloud Project), once the proxy runs (`npm run btp-proxy:<env>`, or
    `/btp-localhost-on-premise-access:run <env> proxy`).
