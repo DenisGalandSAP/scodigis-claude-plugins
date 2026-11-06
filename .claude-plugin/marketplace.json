@@ -1,0 +1,24 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "scodigis",
+  "owner": {
+    "name": "Scodigis",
+    "url": "https://github.com/DenisGalandSAP"
+  },
+  "metadata": {
+    "description": "Claude Code plugins by Scodigis for SAP BTP, SAPUI5 and ABAP development."
+  },
+  "plugins": [
+    {
+      "name": "btp-localhost-on-premise-access",
+      "description": "Run and deploy SAPUI5 / SAP Fiori elements apps, and work in ABAP with ADT and ADT MCP servers, from your own machine through on-premise SAP BTP destinations (cf ssh tunnel to the connectivity proxy).",
+      "version": "0.8.0",
+      "author": {
+        "name": "Scodigis"
+      },
+      "category": "development",
+      "source": "./plugins/btp-localhost-on-premise-access",
+      "homepage": "https://github.com/DenisGalandSAP/scodigis-claude-plugins/tree/main/plugins/btp-localhost-on-premise-access"
+    }
+  ]
+}
