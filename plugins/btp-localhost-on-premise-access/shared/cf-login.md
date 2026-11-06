@@ -52,16 +52,23 @@ the plugin configuration table in the skill, and `existing.*` are the environmen
 1. `CLI orgs`, then `CLI spaces --org <org>`. Defaults: `existing.BTP_CF_ORG` / `existing.BTP_CF_SPACE`, then the
    configured org / space, then the current target from `status`.
 2. `CLI apps --org <org> --space <space>` lists the apps bound to both a destination and a connectivity
-   instance. Use `existing.BTP_APP`, else the configured tunnel app, if it is listed. Pick automatically when
-   there is exactly one, ask when there are several.
+   instance. `tunnel: false` marks a real application (it has a route or other services bound, e.g. a CAP
+   service or an approuter): never pick one of those without asking, because restarting or redeploying it cuts
+   the tunnel. Use `existing.BTP_APP`, else the configured tunnel app, without asking if it is listed with
+   `tunnel: true`; if it is listed with `tunnel: false`, ask, with it as the default. Otherwise pick
+   automatically only when there is exactly one app and it has `tunnel: true`. In every other case ask, list
+   the apps with the real applications marked, and add "Create a new tunnel app `btp-tunnel`" as an option
+   (unless an app of that name is listed); recommend it when no listed app has `tunnel: true`. If the user
+   picks it, continue with step 4.
 3. If the chosen app has `sshEnabled: false`, tell the user to run `cf enable-ssh <app>` and `cf restart <app>`
    (or do it for them if they agree). If SSH is disabled for the whole space, a Space Manager has to run
    `cf allow-space-ssh <space>`.
-4. If there is no app, explain that the proxy needs one, and offer to create `btp-tunnel`: a 64 MB app that only
-   sleeps, which reuses or creates the `destination` and `connectivity` service instances with plan `lite`. This
-   changes the user's BTP space, so get an explicit yes, then run `CLI create-tunnel --org <org> --space <space>`
-   (a minute or two). If it fails on entitlements or quota, relay the message: the subaccount needs the
-   entitlements Destination (lite), Connectivity (lite) and 64 MB of Cloud Foundry Runtime memory.
+4. If there is no app (or the user chose a new tunnel app in step 2), explain that the proxy needs one, and offer
+   to create `btp-tunnel`: a 64 MB app that only sleeps, which reuses or creates the `destination` and
+   `connectivity` service instances with plan `lite`. This changes the user's BTP space, so get an explicit yes,
+   then run `CLI create-tunnel --org <org> --space <space>` (a minute or two). If it fails on entitlements or
+   quota, relay the message: the subaccount needs the entitlements Destination (lite), Connectivity (lite) and
+   64 MB of Cloud Foundry Runtime memory.
 
 ## Destinations
 

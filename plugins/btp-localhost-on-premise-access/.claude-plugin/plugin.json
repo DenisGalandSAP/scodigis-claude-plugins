@@ -2,7 +2,7 @@
   "name": "btp-localhost-on-premise-access",
   "displayName": "BTP Localhost On-Premise Access",
   "description": "Run and deploy a SAPUI5 or SAP Fiori elements app, or work in ABAP with ADT and ADT MCP servers, from your own machine through on-premise SAP BTP destinations. Claude sets up a local proxy that reaches the Cloud Connector through a cf ssh tunnel, and logs in to Cloud Foundry with a password from an environment variable.",
-  "version": "0.8.2",
+  "version": "0.8.3",
   "author": {
     "name": "Scodigis",
     "url": "https://github.com/DenisGalandSAP"
