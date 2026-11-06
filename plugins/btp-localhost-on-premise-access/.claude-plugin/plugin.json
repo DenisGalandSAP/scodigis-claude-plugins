@@ -1,0 +1,77 @@
+{
+  "name": "btp-localhost-on-premise-access",
+  "displayName": "BTP Localhost On-Premise Access",
+  "description": "Run and deploy a SAPUI5 or SAP Fiori elements app, or work in ABAP with ADT and ADT MCP servers, from your own machine through on-premise SAP BTP destinations. Claude sets up a local proxy that reaches the Cloud Connector through a cf ssh tunnel, and logs in to Cloud Foundry with a password from an environment variable.",
+  "version": "0.8.0",
+  "author": {
+    "name": "Scodigis",
+    "url": "https://github.com/DenisGalandSAP"
+  },
+  "homepage": "https://github.com/DenisGalandSAP/scodigis-claude-plugins/tree/main/plugins/btp-localhost-on-premise-access",
+  "repository": "https://github.com/DenisGalandSAP/scodigis-claude-plugins",
+  "documentationUrl": "https://community.sap.com/t5/technology-blog-posts-by-members/vscode-with-s-4-hana-classics-on-premise-and-rise-private-edition-btp/ba-p/14498731",
+  "supportUrl": "https://github.com/DenisGalandSAP/scodigis-claude-plugins/issues",
+  "privacyPolicyUrl": "https://github.com/DenisGalandSAP/scodigis-claude-plugins/blob/main/plugins/btp-localhost-on-premise-access/README.md#data-handling",
+  "license": "MIT",
+  "keywords": [
+    "sap",
+    "sapui5",
+    "fiori",
+    "sap-btp",
+    "destination",
+    "cloud-foundry",
+    "cloud-connector",
+    "abap",
+    "adt"
+  ],
+  "userConfig": {
+    "cf_api": {
+      "type": "string",
+      "title": "Cloud Foundry API endpoint",
+      "description": "Default region for new environments, e.g. https://api.cf.eu10.hana.ondemand.com (subaccount overview in the BTP cockpit)",
+      "default": ""
+    },
+    "cf_org": {
+      "type": "string",
+      "title": "Cloud Foundry org",
+      "description": "Default org for new environments",
+      "default": ""
+    },
+    "cf_space": {
+      "type": "string",
+      "title": "Cloud Foundry space",
+      "description": "Default space for new environments",
+      "default": ""
+    },
+    "cf_app": {
+      "type": "string",
+      "title": "Tunnel app",
+      "description": "Default app bound to the destination and connectivity services (cf ssh goes through it)",
+      "default": ""
+    },
+    "cf_user": {
+      "type": "string",
+      "title": "Cloud Foundry user (e-mail)",
+      "description": "User the scripts log in with when the cf session has expired",
+      "default": ""
+    },
+    "cf_password_env": {
+      "type": "string",
+      "title": "Password variable",
+      "description": "NAME of the environment variable that holds that user's password, e.g. CF_PASSWORD. Set the variable in your shell profile: the password itself never goes into this configuration",
+      "default": "CF_PASSWORD"
+    },
+    "cf_origin": {
+      "type": "string",
+      "title": "Identity provider origin",
+      "description": "Only for a custom identity provider (cf auth --origin), e.g. sap.custom; empty for the SAP ID service",
+      "default": ""
+    },
+    "cf_sso": {
+      "type": "boolean",
+      "title": "Log in with single sign-on",
+      "description": "Use an SSO passcode instead of user and password. The scripts cannot log in again on their own then: an expired session needs cf login --sso in a terminal",
+      "default": false
+    }
+  }
+}
