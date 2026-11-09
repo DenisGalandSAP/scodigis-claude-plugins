@@ -12,7 +12,7 @@ credentials. Environment name from the arguments, if any: `$ARGUMENTS`.
 Run the CLI `btp-on-premise-setup` from the npm package `@scodigis/generator-btp-on-premise-scripts` as:
 
 ```sh
-npx -y -p @scodigis/generator-btp-on-premise-scripts@0.8.4 btp-on-premise-setup <command> [options]
+npx -y -p @scodigis/generator-btp-on-premise-scripts@0.8.5 btp-on-premise-setup <command> [options]
 ```
 
 Below, `CLI` stands for that command. Every command prints JSON; a failure prints `{ "error": "..." }` and exits
